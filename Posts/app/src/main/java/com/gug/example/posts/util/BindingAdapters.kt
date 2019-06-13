@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -20,10 +21,7 @@ fun setImageUrl(imageView: ImageView, url: String) {
 @BindingAdapter("postsApiStatus")
 fun postsApiStatus(statusTextView: TextView, status: NetworkApiStatus?) {
     when (status) {
-        NetworkApiStatus.LOADING -> {
-            statusTextView.visibility = View.VISIBLE
-        }
-        NetworkApiStatus.ERROR -> {
+        NetworkApiStatus.LOADING, NetworkApiStatus.ERROR -> {
             statusTextView.visibility = View.VISIBLE
         }
         NetworkApiStatus.DONE -> {
@@ -41,10 +39,34 @@ fun showFromApiStatus(progressBar: ProgressBar, status: NetworkApiStatus?) {
 }
 
 @BindingAdapter("hideFromApiStatus")
-fun hideFromApiStatus(recyclerView: RecyclerView, status: NetworkApiStatus?) {
+fun hideFromApiStatus(view: View, status: NetworkApiStatus?) {
     when (status) {
-        NetworkApiStatus.LOADING -> recyclerView.visibility = View.GONE
-        NetworkApiStatus.ERROR -> recyclerView.visibility = View.GONE
-        else -> recyclerView.visibility = View.VISIBLE
+        NetworkApiStatus.LOADING -> view.visibility = View.GONE
+        NetworkApiStatus.ERROR -> view.visibility = View.GONE
+        else -> view.visibility = View.VISIBLE
+    }
+}
+
+@BindingAdapter("hideFromBoolean")
+fun hideFromBoolean(view: View, mustShow: Boolean) {
+    when (mustShow) {
+        true -> view.visibility = View.VISIBLE
+        else -> view.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("hideIfZero")
+fun hideIfZero(view: View, postSize: Int) {
+    when (postSize) {
+        0 -> view.visibility = View.GONE
+        else -> view.visibility = View.VISIBLE
+    }
+}
+
+@BindingAdapter("showIfZero")
+fun showIfZero(view: View, postSize: Int) {
+    when (postSize) {
+        0 -> view.visibility = View.VISIBLE
+        else -> view.visibility = View.GONE
     }
 }

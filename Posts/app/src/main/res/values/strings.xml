@@ -25,13 +25,25 @@
     <string name="text_menu_detailPost">Detalle Post</string>
     <string name="text_menu_detailUser">Usuario</string>
     <string name="text_menu_detailComments">Comentarios</string>
+    <string name="text_menu_delete">Borrar todo</string>
+    <string name="text_menu_about">Acerca de</string>
 
     <string name="msg_deletePosts">Se han eliminado todos los posts</string>
     <string name="msg_apiLoading">Cargando información</string>
     <string name="msg_apiError">Ha ocurrido un error inesperado</string>
 
     <string name="lorem_words10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in.</string>
-    <string name="lorem_words50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nulla dui, luctus a lorem id, dictum ultrices diam. Fusce fermentum id erat et vehicula. Pellentesque commodo sed purus eget dapibus. Vivamus et nisi nulla. Proin pharetra faucibus nisi id tincidunt. Nullam faucibus, lectus non luctus iaculis, sapien neque tempus nibh.</string>
+    <string name="lorem_words50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nulla dui, luctus a
+        lorem id, dictum ultrices diam. Fusce fermentum id erat et vehicula. Pellentesque commodo sed purus eget
+        dapibus. Vivamus et nisi nulla. Proin pharetra faucibus nisi id tincidunt. Nullam faucibus, lectus non luctus
+        iaculis, sapien neque tempus nibh.
+    </string>
+    <string name="resume_favorites">Favoritos</string>
+    <string name="resume_allPosts">Todos los posts</string>
+    <string name="resume_msg">Al momento tienes</string>
+    <string name="resume_readed">Leidos</string>
+    <string name="msgEmptyPosts">No hay posts para mostrar.</string>
+    <string name="msgEmptyDeletePosts">No hay nada que puedas eliminar, juega un poco con los posts y vuelve luego.</string>
 
 
 </resources>

@@ -2,13 +2,14 @@ package com.gug.example.posts.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
+import com.google.android.material.navigation.NavigationView
 import com.gug.example.posts.R
 import com.gug.example.posts.databinding.ActivityMainBinding
 
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNavView.visibility = View.GONE
                     binding.toolbar.visibility = View.GONE
                 }
-                R.id.postDetailFragment -> {
+                R.id.postDetailFragment, R.id.aboutMeInPosts, R.id.deletePosts -> {
                     binding.bottomNavView.visibility = View.GONE
                     binding.toolbar.visibility = View.VISIBLE
                 }
@@ -68,5 +69,15 @@ class MainActivity : AppCompatActivity() {
         // Allows NavigationUI to support proper up navigation or the drawer layout
         // drawer menu, depending on the situation
         return host.navController.navigateUp(appBarConfiguration)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val retValue = super.onCreateOptionsMenu(menu)
+        return retValue
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(host.navController)
+                || super.onOptionsItemSelected(item)
     }
 }

@@ -71,5 +71,31 @@
                 android:id="@+id/action_global_postDetailFragment"
                 app:destination="@id/postDetailFragment"/>
 
+        <fragment
+                android:id="@+id/deletePosts"
+                android:name="com.gug.example.posts.ui.delete.DeletePostsFragment"
+                android:label="@string/text_menu_delete"
+                tools:layout="@layout/fragment_delete_posts"/>
+
+        <fragment
+                android:id="@+id/aboutMeInPosts"
+                android:name="com.gug.example.posts.ui.about.AboutFragment"
+                android:label="@string/text_menu_about"
+                tools:layout="@layout/fragment_about">
+
+            <argument
+                    android:name="showOption"
+                    app:argType="boolean"
+                    android:defaultValue="false"/>
+
+        </fragment>
+
     </navigation>
+
+    <action
+            android:id="@+id/action_global_toPosts"
+            app:destination="@id/navigation_posts"
+            app:popUpTo="@+id/aboutFragment"
+            app:popUpToInclusive="true"/>
+
 </navigation>

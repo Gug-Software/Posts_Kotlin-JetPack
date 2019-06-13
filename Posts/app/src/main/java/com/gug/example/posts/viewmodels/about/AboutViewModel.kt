@@ -17,6 +17,10 @@ class AboutViewModel(
     val navToPosts: LiveData<Boolean>
         get() = _navToPosts
 
+    private val _showOption = MutableLiveData<Boolean>()
+    val showOption: LiveData<Boolean>
+        get() = _showOption
+
     override fun setShowAbout(showAbout: Boolean) {
         repository.setShowAbout(showAbout)
     }
@@ -27,6 +31,10 @@ class AboutViewModel(
 
     fun onPostsNavigatedDone() {
         _navToPosts.value = false
+    }
+
+    fun setShowOption(showOption: Boolean) {
+        _showOption.value = showOption
     }
 
 }

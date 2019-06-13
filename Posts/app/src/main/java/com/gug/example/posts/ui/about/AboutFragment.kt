@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.gug.example.posts.R
 import com.gug.example.posts.databinding.FragmentAboutBinding
+import com.gug.example.posts.ui.posts.PostsFragmentArgs
 import com.gug.example.posts.viewmodels.about.AboutViewModel
 import com.gug.example.posts.viewmodels.about.AboutViewModelFactory
 
@@ -32,12 +33,14 @@ class AboutFragment : Fragment() {
             inflater, R.layout.fragment_about, container, false
         )
 
+        val args = AboutFragmentArgs.fromBundle(arguments!!)
         application = requireNotNull(value = this.activity).application
         viewModelFactory = AboutViewModelFactory(application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(AboutViewModel::class.java)
 
         binding.viewmodel = viewModel
         binding.setLifecycleOwner(this)
+        viewModel.setShowOption(args.showOption)
 
         defineObservers()
 
@@ -50,7 +53,7 @@ class AboutFragment : Fragment() {
         viewModel.navToPosts.observe(this, Observer { posts ->
             if (posts) {
                 this.findNavController().navigate(
-                    AboutFragmentDirections.actionToPosts()
+                    AboutFragmentDirections.actionGlobalToPosts()
                 )
                 viewModel.onPostsNavigatedDone()
             }

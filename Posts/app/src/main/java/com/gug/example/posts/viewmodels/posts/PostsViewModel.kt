@@ -3,6 +3,7 @@ package com.gug.example.posts.viewmodels.posts
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.gug.example.posts.database.PostsDataBase
 import com.gug.example.posts.domain.Post
 import com.gug.example.posts.network.NetworkApiStatus
@@ -19,6 +20,9 @@ class PostsViewModel(
 
     val postsRepository = PostsRepository(postsDataBase)
     val posts = getPosts(showFavorites)
+    val postSize = Transformations.map(posts) {
+        it.size
+    }
 
     private val _navToDetailPost = MutableLiveData<Post>()
     val navToDetailPost: LiveData<Post>
