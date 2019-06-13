@@ -1,6 +1,37 @@
 <resources>
+
     <string name="app_name">Posts</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="text_readOk">Leido</string>
+    <string name="text_readNo">Sin leer</string>
+
+    <string name="text_splashPosts">Posts</string>
+
+    <string name="text_aboutPosts">Posts</string>
+    <string name="text_aboutNotShow">No mostrar de nuevo</string>
+    <string name="text_aboutMe">Juan Carlos Martínez Orjuela\n Android dev.</string>
+
+    <string name="text_postDetail_userNickname">Username</string>
+    <string name="text_postDetail_userName">Nombre</string>
+    <string name="text_postDetail_userEmail">Mail</string>
+    <string name="text_postDetail_web">Web</string>
+    <string name="text_postDetail_address">Dirección</string>
+    <string name="text_postDetail_company">Empresa</string>
+
+    <string name="text_menu_postsAll">Posts</string>
+    <string name="text_menu_postsFavorites">Favoritos</string>
+    <string name="text_menu_detailPost">Detalle Post</string>
+    <string name="text_menu_detailUser">Usuario</string>
+    <string name="text_menu_detailComments">Comentarios</string>
+
+    <string name="msg_deletePosts">Se han eliminado todos los posts</string>
+    <string name="msg_apiLoading">Cargando información</string>
+    <string name="msg_apiError">Ha ocurrido un error inesperado</string>
+
+    <string name="lorem_words10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in.</string>
+    <string name="lorem_words50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nulla dui, luctus a lorem id, dictum ultrices diam. Fusce fermentum id erat et vehicula. Pellentesque commodo sed purus eget dapibus. Vivamus et nisi nulla. Proin pharetra faucibus nisi id tincidunt. Nullam faucibus, lectus non luctus iaculis, sapien neque tempus nibh.</string>
+
+
 </resources>

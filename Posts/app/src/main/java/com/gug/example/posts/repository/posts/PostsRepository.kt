@@ -17,12 +17,12 @@ class PostsRepository(
 ) : IContractPosts.Model {
 
     override fun getAllPosts(): LiveData<List<Post>> =
-        Transformations.map(database.postDao.getPostsFavoritesLive()) {
+        Transformations.map(database.postDao.getPostsAllLive()) {
             it.asDomainModel()
         }
 
     override fun getFavoritesPosts(): LiveData<List<Post>> =
-        Transformations.map(database.postDao.getPostsAllLive()) {
+        Transformations.map(database.postDao.getPostsFavoritesLive()) {
             it.asDomainModel()
         }
 

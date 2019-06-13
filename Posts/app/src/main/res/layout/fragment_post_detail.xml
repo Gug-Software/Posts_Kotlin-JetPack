@@ -1,14 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".ui.detail.PostDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.details.PostDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+                name="viewmodel"
+                type="com.gug.example.posts.viewmodels.detail.PostDetailViewModel"/>
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
+            android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ProgressBar
+                    android:id="@+id/posts_progress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:showFromApiStatus="@{viewmodel.status}"
+                    android:indeterminate="true"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                    tools:text="JkVillavo12COL"
+                    android:text="@{viewmodel.user.username}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nickname_text"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textAppearance="?textAppearanceSearchResultTitle"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/guideline4"
+                    app:layout_constraintGuide_percent="0.50"/>
+
+            <TextView
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="jcmodev12@gmail.com"
+                    android:text="@{viewmodel.user.email}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mail_text"
+                    android:textAppearance="?textAppearanceCaption"
+                    app:layout_constraintTop_toBottomOf="@+id/nickname_text"/>
+
+            <TextView
+                    tools:text="Juan Carlos Martinez"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name_text"
+                    android:text="@{viewmodel.user.name}"
+                    android:textAppearance="?textAppearanceBody2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mail_text"
+                    android:layout_marginTop="8dp"/>
+
+            <TextView
+                    tools:text="@string/lorem_words10"
+                    android:drawableTop="@drawable/ic_person_pin_circle_black_24dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/address_text"
+                    android:drawableTint="@color/secondaryDarkColor"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewmodel.user.userAddress}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_text"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                    android:layout_marginEnd="8dp"
+                    android:textAppearance="?textAppearanceCaption"
+                    android:layout_marginStart="8dp"
+                    android:textAlignment="center"/>
+
+            <TextView
+                    tools:text="@string/lorem_words10"
+                    android:drawableTop="@drawable/ic_business_black_24dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/company_text"
+                    android:text="@{viewmodel.user.userCompany}"
+                    android:textAppearance="?textAppearanceCaption"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline4"
+                    android:layout_marginStart="8dp"
+                    android:drawableTint="@color/secondaryDarkColor"
+                    android:layout_marginEnd="8dp"
+                    android:textAlignment="center"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/name_text"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Detail_inputLayout"
+                    app:layout_constraintTop_toBottomOf="@id/company_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:boxStrokeColor="@color/secondaryDarkColor"
+                    android:id="@+id/post_inputLayout"
+                    android:layout_marginTop="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/post_inputText"
+                        android:text="@{viewmodel.currentPost.body}"
+                        android:textAppearance="?textAppearanceCaption"
+                        tools:text="@string/lorem_words50"
+                        style="@style/Detail_inputText"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    android:drawablePadding="16dp"
+                    android:drawableLeft="@drawable/ic_comment_black_24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/post_inputLayout"
+                    android:text="@string/text_menu_detailComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/comments_text"
+                    android:layout_marginTop="16dp"
+                    android:drawableTint="@color/secondaryDarkColor"
+                    android:layout_marginStart="16dp"
+                    android:textAlignment="center"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toBottomOf="@+id/comments_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginBottom="8dp"
+                    tools:listitem="@layout/list_item_comment"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:id="@+id/comments_recycler"
+                    android:layout_marginTop="8dp"/>
+
+            <ImageButton
+                    android:src="@drawable/ic_favorite_black_24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButton"
+                    android:onClick="@{() -> viewmodel.setPostFavoriteValue()}"
+                    app:srcCompat="@drawable/ic_favorite_border_black_24dp"
+                    android:tint="@android:color/holo_red_light"
+                    android:background="@null"
+                    app:layout_constraintTop_toBottomOf="@+id/post_inputLayout"
+                    app:layout_constraintEnd_toEndOf="@+id/post_inputLayout"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

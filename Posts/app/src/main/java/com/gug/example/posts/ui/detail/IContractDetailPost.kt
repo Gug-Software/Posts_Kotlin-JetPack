@@ -13,7 +13,7 @@ interface IContractDetailPost {
     interface ViewModel {
         suspend fun refreshUserByPost()
         suspend fun refreshCommentsByPostId()
-        fun setPostFavoriteValue(post: Post)
+        fun setPostFavoriteValue()
         fun getCommentsByPost(): LiveData<List<Comment>>
     }
 
